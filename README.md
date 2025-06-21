@@ -2,12 +2,28 @@
 The Airbnb Clone Project is a comprehensive, real-world application designed to simulate the development of a robust booking platform like Airbnb. It involves a deep dive into full-stack development, focusing on backend systems, database design, API development, and application security. This project enables learners to understand complex architectures, workflows, and collaborative team dynamics while building a scalable web application.
 
 ## Table of Content
+- [Project Goals](#project-goals)
 - [Team Roles](#team-roles)
 - [Technology Stack](#technology-stack)
 - [Database Design](#database-design)
 - [Feature Breakdown](#feature-breakdown)
 - [API Security](#api-security)
 - [CI/CD Pipeline](#cicd-pipeline)
+
+## Project Goals
+
+1. **User Management**: Implement a secure system for user registration, authentication, and profile management.
+
+2. **Property Management**: Develop features for property listing creation, updates, and retrieval.
+
+3. **Booking System**: Create a booking mechanism for users to reserve properties and manage booking details.
+    
+4. **Payment Processing**: Integrate a payment system to handle transactions and record payment details.
+    
+5. **Review System**: Allow users to leave reviews and ratings for properties.
+    
+6. **Data Optimization**: Ensure efficient data retrieval and storage through database optimizations.
+
 
 ## Team Roles
 
@@ -52,15 +68,64 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
 
 The key entities required for the project's database structure.
 
-1. **Users**: Represents customers, hosts, and admins.
+### 1. Users: Represents customers, hosts, and admins.
+**Important Fields**: 
+- `user_id`(Primary Key)
+- `name`
+- `email`
+- `role`(e.g., guest, host)
 
-2. **Properties**: Listings available for rent (e.g., apartments, houses).
+**Relationships**:
+- Can own Properties 
+- Can make Bookings 
+- A user can write multiple reviews
 
-3. **Bookings**: Reservation records linking users to properties.
+### 2. Properties: Listings available for rent (e.g., apartments, houses).
+**Important Fields**: 
+- `property_id` (Primary Key)
+- `title`
+- `location`
+- `price_per_night`
 
-4. **Reviews**: Feedback from users about properties or hosts.
+**Relationships**:
+- Belongs to a User (host)
+- Can have multiple Bookings
+- Can receive multiple Reviews
 
-5. **Payments**: Tracks financial transactions related to bookings.
+### 3. Bookings: Reservation records linking users to properties.
+**Important Fields**: 
+- `booking_id` (Primary Key)
+- `user_id` 
+- `property_id` 
+- `check_in`, `check_out`
+- `status` (e.g., confirmed, cancelled)
+
+**Relationships**:
+- Links Users and Properties
+- Each Booking can have one Payment
+
+### 4. Reviews: Feedback from users about properties or hosts.
+**Important Fields**: 
+- `review_id` (Primary Key)
+- `user_id`
+- `property_id` 
+- `rating`
+
+**Relationships**:
+- Submitted by Users
+- Linked to Properties
+
+### 5. Payments: Tracks financial transactions related to bookings.
+**Important Fields**: 
+- `payment_id`
+- `booking_id` 
+- `amount`
+- `payment_method`
+- `payment_date`
+
+**Relationships**:
+- Associated with a Booking
+- Indirectly linked to a User and Property through the Booking
 
 ## Feature Breakdown
 
