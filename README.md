@@ -145,4 +145,25 @@ The key entities required for the project's database structure.
 
 ## API Security
 
+- **Authentication**
+  
+  Verifies user identity using secure login methods and prevents unauthorized access to user accounts and personal data.
+
+- **Authorization**
+
+  Ensures users can only access resources they're permitted to (e.g., only hosts can modify their listings).
+
+- **Rate Limiting**
+
+  Prevents abuse of APIs by limiting the number of requests a user can make in a given timeframe.
+
+- **Input Validation & Sanitization**
+
+  Maintains data integrity and protects application logic.
+
+- **HTTPS & Data Encryption**
+
+  Encrypts all data in transit and optionally at rest (e.g., with TLS and AES).
+
+
 ## CI/CD Pipeline
