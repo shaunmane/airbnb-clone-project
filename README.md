@@ -129,6 +129,20 @@ The key entities required for the project's database structure.
 
 ## Feature Breakdown
 
+1. **API Documentation**: Documente APIs using the OpenAPI standard to ensure clarity and ease of integration.
+
+2. **User Management**: Allows users to register, log in, and manage their profile. Roles may include host or guest. 
+
+3. **Property Management**: Hosts can create, update, retrieve, and delete property listings.
+
+4. **Booking System**: Users can make, update, and manage bookings, including check-in and check-out details.
+
+5. **Payment Processing**: Handle payment transactions related to bookings.
+
+6. **Review System**: Post and manage reviews for properties.
+
+7. **Database Optimizations**: Use caching strategies to reduce database load and improve performance.
+
 ## API Security
 
 ## CI/CD Pipeline
