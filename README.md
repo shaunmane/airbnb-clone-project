@@ -69,101 +69,69 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
 The key entities required for the project's database structure.
 
 ### 1. Users: Represents customers, hosts, and admins.
-**Important Fields**: 
-- `user_id`(Primary Key)
-- `name`
-- `email`
-- `role`(e.g., guest, host)
-
-**Relationships**:
-- Can own Properties 
-- Can make Bookings 
-- A user can write multiple reviews
+- `user_id`, `name`, `email`, `role`
+- A user can own Properties, can make Bookings, can write multiple reviews.
 
 ### 2. Properties: Listings available for rent (e.g., apartments, houses).
-**Important Fields**: 
-- `property_id` (Primary Key)
-- `title`
-- `location`
-- `price_per_night`
-
-**Relationships**:
-- Belongs to a User (host)
-- Can have multiple Bookings
-- Can receive multiple Reviews
+- `property_id`, `title`, `location`, `price_per_night`
+- Belongs to a User (host), can have multiple Bookings and receive multiple Reviews.
 
 ### 3. Bookings: Reservation records linking users to properties.
-**Important Fields**: 
-- `booking_id` (Primary Key)
-- `user_id` 
-- `property_id` 
-- `check_in`, `check_out`
-- `status` (e.g., confirmed, cancelled)
-
-**Relationships**:
-- Links Users and Properties
-- Each Booking can have one Payment
+- `booking_id`, `user_id`, `property_id`, `check_in`, `check_out`, `status` (e.g., confirmed, cancelled)
+- Links Users and Properties and each booking can have one Payment.
 
 ### 4. Reviews: Feedback from users about properties or hosts.
-**Important Fields**: 
-- `review_id` (Primary Key)
-- `user_id`
-- `property_id` 
-- `rating`
-
-**Relationships**:
-- Submitted by Users
-- Linked to Properties
+- `review_id`, `user_id`, `property_id`, `rating`
+- Submitted by Users, linked to Properties.
 
 ### 5. Payments: Tracks financial transactions related to bookings.
-**Important Fields**: 
-- `payment_id`
-- `booking_id` 
-- `amount`
-- `payment_method`
-- `payment_date`
-
-**Relationships**:
-- Associated with a Booking
-- Indirectly linked to a User and Property through the Booking
+- `payment_id`, `booking_id`, `amount`, `payment_method`, `payment_date`
+- Associated with a booking and indirectly linked to a user and property through the booking.
 
 ## Feature Breakdown
 
-1. **API Documentation**: Documente APIs using the OpenAPI standard to ensure clarity and ease of integration.
+- **API Documentation**: Documente APIs using the OpenAPI standard to ensure clarity and ease of integration.
 
-2. **User Management**: Allows users to register, log in, and manage their profile. Roles may include host or guest. 
+- **User Management**: Allows users to register, log in, and manage their profile. Roles may include host or guest. 
 
-3. **Property Management**: Hosts can create, update, retrieve, and delete property listings.
+- **Property Management**: Hosts can create, update, retrieve, and delete property listings.
 
-4. **Booking System**: Users can make, update, and manage bookings, including check-in and check-out details.
+- **Booking System**: Users can make, update, and manage bookings, including check-in and check-out details.
 
-5. **Payment Processing**: Handle payment transactions related to bookings.
+- **Payment Processing**: Handle payment transactions related to bookings.
 
-6. **Review System**: Post and manage reviews for properties.
+- **Review System**: Post and manage reviews for properties.
 
-7. **Database Optimizations**: Use caching strategies to reduce database load and improve performance.
+- **Database Optimizations**: Use caching strategies to reduce database load and improve performance.
 
 ## API Security
 
-- **Authentication**
-  
-  Verifies user identity using secure login methods and prevents unauthorized access to user accounts and personal data.
+Security is crucial to protect user data, ensure only authorized access, and safeguard financial transactions. Without strong security, user trust can be lost, data can be stolen, and the system can be exploited.
 
-- **Authorization**
+- **Authentication** - Verifies user identity using secure login methods and prevents unauthorized access to user accounts and personal data.
 
-  Ensures users can only access resources they're permitted to (e.g., only hosts can modify their listings).
+- **Authorization** - Ensures users can only access resources they're permitted to (e.g., only hosts can modify their listings).
 
-- **Rate Limiting**
+- **Rate Limiting** - Prevents abuse of APIs by limiting the number of requests a user can make in a given timeframe.
 
-  Prevents abuse of APIs by limiting the number of requests a user can make in a given timeframe.
+- **Input Validation & Sanitization** - Maintains data integrity and protects application logic.
 
-- **Input Validation & Sanitization**
-
-  Maintains data integrity and protects application logic.
-
-- **HTTPS & Data Encryption**
-
-  Encrypts all data in transit and optionally at rest (e.g., with TLS and AES).
+- **HTTPS & Data Encryption** - Encrypts all data in transit and optionally at rest (e.g., with TLS and AES).
 
 
 ## CI/CD Pipeline
+
+CI/CD stands for Continuous Integration and Continuous Deployment (or Continuous Delivery). It's a set of practices and tools designed to improve the software development process by automating builds, testing, and deployment, enabling you to ship code changes faster and reliably.
+
+- **Continuous integration (CI)** - refers to the practice of automatically and frequently integrating code changes into a shared source code repository.
+
+- **Continuous delivery and/or deployment (CD)** - is a 2 part process that refers to the integration, testing, and delivery of code changes. 
+
+  Continuous delivery stops short of automatic production deployment, while continuous deployment automatically releases the updates into the production environment.
+
+### Tools That Could Be Used
+- **GitHub Actions**: For CI/CD workflows (runs tests on every push/pull request).
+
+- **Docker**: Containerization to ensure consistent environments across development/staging/production.
+
+- **AWS/Heroku**: Cloud platforms for hosting the application.
